@@ -26,7 +26,7 @@ class SignUpButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width / 2,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).primaryColor.withOpacity(0.8),
         ),
         child: Center(
             child: Text("Sign Up",

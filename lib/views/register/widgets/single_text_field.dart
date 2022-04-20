@@ -28,51 +28,53 @@ class RegisterTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: AuthenticationPaddings.mainPadding,
-      child: TextFormField(
-        inputFormatters: [
-          maskTextInputFormatter ??
-              FilteringTextInputFormatter.allow(
-                RegExp(r'[a-zA-Z ]'),
-              ),
-
-        
-        ],
-        autofocus: false,
-        controller: controller,
-        keyboardType: keyboardType,
-        validator: (value) {
-          if (value!.isEmpty) {
-            return isEmptyText;
-          }
-          if (!regExp.hasMatch(value)) {
-            return isValidText;
-          }
-          return null;
-        },
-        onSaved: (value) {
-          controller.text = value!;
-        },
-        textInputAction: textInputAction,
-        decoration: InputDecoration(
-          prefixIcon: Icon(
-            icon,
-            color: Theme.of(context).secondaryHeaderColor,
-          ),
-          contentPadding: AuthenticationPaddings.contentPadding,
-          hintText: hintText,
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).primaryColor),
-            borderRadius: BorderRadius.circular(32),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).secondaryHeaderColor),
-            borderRadius: BorderRadius.circular(10),
+    return RepaintBoundary(
+      child: Padding(
+        padding: AuthenticationPaddings.mainPadding,
+        child: TextFormField(
+          inputFormatters: [
+            maskTextInputFormatter ??
+                FilteringTextInputFormatter.allow(
+                  RegExp(r'[a-zA-Z ]'),
+                ),
+    
+          
+          ],
+          autofocus: false,
+          controller: controller,
+          keyboardType: keyboardType,
+          validator: (value) {
+            if (value!.isEmpty) {
+              return isEmptyText;
+            }
+            if (!regExp.hasMatch(value)) {
+              return isValidText;
+            }
+            return null;
+          },
+          onSaved: (value) {
+            controller.text = value!;
+          },
+          textInputAction: textInputAction,
+          decoration: InputDecoration(
+            prefixIcon: Icon(
+              icon,
+              color: Theme.of(context).secondaryHeaderColor,
+            ),
+            contentPadding: AuthenticationPaddings.contentPadding,
+            hintText: hintText,
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+              borderRadius: BorderRadius.circular(32),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Theme.of(context).secondaryHeaderColor),
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
         ),
       ),
