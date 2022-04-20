@@ -11,8 +11,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        Provider(create: (_)=> Controllers()),
-        Provider(create: (_)=> FormKeys()),
+        Provider(create: (_) => Controllers()),
+        Provider(create: (_) => FormKeys()),
       ],
       child: const UrunKatolog(),
     ),
@@ -28,14 +28,20 @@ class UrunKatolog extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Urun Katalog',
       theme: ThemeData.dark().copyWith(
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: MaterialStateProperty.all(
+           Colors.transparent,
+          ),
+        ),
         primaryColor: DarkTheme.primaryColor,
         secondaryHeaderColor: DarkTheme.secondaryColor,
-          scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColor,
-          appBarTheme: const AppBarTheme(
-            elevation: CustomAppBarTheme.elevation,
-            color: CustomAppBarTheme.backgroundColor,
-          )),
-      home:const Login(),
+        scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColor,
+        appBarTheme: const AppBarTheme(
+          elevation: CustomAppBarTheme.elevation,
+          color: CustomAppBarTheme.backgroundColor,
+        ),
+      ),
+      home: const Login(),
     );
   }
 }
