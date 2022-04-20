@@ -5,5 +5,10 @@ class Controllers {
   final TextEditingController passwordController = TextEditingController();
 
   final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController secondNameController = TextEditingController();
+  final TextEditingController registerEmailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController registerPasswordController = TextEditingController();
+  final TextEditingController registerRePasswordController = TextEditingController();
   
 }
