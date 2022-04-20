@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:urun_katalog/core/constants/paddings/login_paddings.dart';
+import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 
@@ -12,7 +12,7 @@ class LoginEmailTextField extends StatelessWidget {
     final emailController = Provider.of<Controllers>(context).emailController;
 
     return Padding(
-      padding: LoginPaddings.mainPadding,
+      padding: AuthenticationPaddings.mainPadding,
       child: TextFormField(
         autofocus: false,
         controller: emailController,
@@ -35,7 +35,7 @@ class LoginEmailTextField extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon:
               Icon(Icons.mail, color: Theme.of(context).secondaryHeaderColor),
-          contentPadding: LoginPaddings.contentPadding,
+          contentPadding: AuthenticationPaddings.contentPadding,
           hintText: EmailTexts.hintText,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Theme.of(context).primaryColor),

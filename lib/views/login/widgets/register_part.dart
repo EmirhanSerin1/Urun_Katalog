@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:urun_katalog/core/components/page_route.dart';
-import 'package:urun_katalog/core/constants/paddings/login_paddings.dart';
+import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/views/register/register.dart';
 
 class RegisterPart extends StatelessWidget {
@@ -9,7 +9,7 @@ class RegisterPart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: LoginPaddings.mainPadding,
+      padding: AuthenticationPaddings.mainPadding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
