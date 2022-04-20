@@ -32,9 +32,10 @@ class Login extends StatelessWidget {
             key: _loginFormKey,
             child: DecoratedBox(
               decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/background.jpg"),
-                      fit: BoxFit.cover)),
+                image: DecorationImage(
+                    image: AssetImage("assets/background.jpg"),
+                    fit: BoxFit.cover),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,4 +59,3 @@ class Login extends StatelessWidget {
     );
   }
 }
-
