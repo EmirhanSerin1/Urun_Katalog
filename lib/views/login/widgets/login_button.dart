@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:urun_katalog/core/constants/paddings/login_paddings.dart';
+import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 import 'package:urun_katalog/providers/keys.dart';
@@ -21,8 +21,8 @@ class LoginButton extends StatelessWidget {
         }
       },
       child: Container(
-        padding: LoginPaddings.contentPadding,
-        margin: LoginPaddings.mainPadding,
+        padding: AuthenticationPaddings.contentPadding,
+        margin: AuthenticationPaddings.mainPadding,
         width: MediaQuery.of(context).size.width / 2,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
