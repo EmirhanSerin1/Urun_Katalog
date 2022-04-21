@@ -38,7 +38,7 @@ class LoginButton extends StatelessWidget {
           Map bodyMap = jsonDecode(req.body);
           Provider.of<Token>(context, listen: false)
             .tokis(bodyMap["token"].toString());
-
+          
 
           if(req.statusCode == 200 && bodyMap["token"] != ""){
             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const HomeView()));
@@ -72,7 +72,8 @@ class LoginButton extends StatelessWidget {
     };
     http.Response response =
         await http.post(Uri.parse(loginUrl), headers: headers, body: body);
-
+    
+    print(response.body);
     return response;
   }
 }

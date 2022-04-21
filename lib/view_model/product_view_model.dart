@@ -1,22 +1,22 @@
 
 
-// import 'package:urun_katalog/models/products.dart';
-// import 'package:urun_katalog/services/services.dart';
+import 'package:urun_katalog/models/products.dart';
+import 'package:urun_katalog/services/services.dart';
 
-// class ListPicturesViewModel{
-//   List<PicturesViewModel>? pictures;
+class ListProductsViewModel{
+  List<PicturesViewModel>? products;
 
-//   Future<void> fetchProducts() async{
-//     final api = await ProductService().fetcPrpductsApi();
+  Future<void> fetchProducts() async{
+    final api = await ProductService().fetchProductsApi();
 
-//     pictures = api.map((e) => PicturesViewModel(e)).toList();
-//   }
+    products = api.map((e) => PicturesViewModel(e)).toList();
+  }
 
-// }
+}
 
 
-// class PicturesViewModel {
-//   final Product? productModel;
+class PicturesViewModel {
+  final Product? productModel;
 
-//   PicturesViewModel(this.productModel);
-// }
+  PicturesViewModel(this.productModel);
+}
