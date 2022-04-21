@@ -10,6 +10,7 @@ import 'package:urun_katalog/view_model/product_view_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:urun_katalog/views/home/widgets/head_line.dart';
 import 'package:urun_katalog/views/home/widgets/popular_item.dart';
+import 'package:urun_katalog/views/home/widgets/popular_part.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _HomeViewState extends State<HomeView> {
   ListProductsViewModel listProductsViewModel = ListProductsViewModel();
   late Future<List> futureAlbum;
   PageController pageController = PageController();
-  double viewportFraction = 0.7;
+  double viewportFraction = 0.6;
   double pageOffSet = 0;
 
   @override
@@ -43,46 +44,36 @@ class _HomeViewState extends State<HomeView> {
     final token = Provider.of<Token>(context, listen: false).tokeis;
     var selectedIndex = 0;
     return Scaffold(
-      body: ListView(
-        children: [
-          FutureBuilder<List>(
-            future: futureAlbum,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const HeadLine(text: "Popular Books"),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 2.3,
-                      child: PageView.builder(
-                        controller: pageController,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          List<dynamic>? data = snapshot.data;
-
-                          double scale = max(
-                              viewportFraction,
-                              (1 - (pageOffSet - index).abs()) +
-                                  viewportFraction);
-                          return PopularItem(
-                            scale: scale,
-                            datas: data!,
-                            index: index,
-                          );
-                        },
+      body: Material(
+        color: Theme.of(context).primaryColor,
+        child: ListView(
+          children: [
+            FutureBuilder<List>(
+              future: futureAlbum,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const HeadLine(text: "Popular Books"),
+                      PopularItemsPart(
+                        pageController: pageController,
+                        viewportFraction: viewportFraction,
+                        pageOffSet: pageOffSet,
+                        itemLength: snapshot.data!.length,
+                        data: snapshot.data,
                       ),
-                    ),
-                    const HeadLine(text: "Newest"),
-                  ],
-                );
-              }
-            },
-          ),
-        ],
+                      const HeadLine(text: "Newest"),
+                    ],
+                  );
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -117,6 +108,4 @@ class _HomeViewState extends State<HomeView> {
       throw Exception('Failed to load album');
     }
   }
-
 }
-

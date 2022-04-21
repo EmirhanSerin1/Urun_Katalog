@@ -28,7 +28,7 @@ class UrunKatolog extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Urun Katalog',
-        theme: ThemeData.light().copyWith(
+        theme: ThemeData.dark().copyWith(
           scrollbarTheme: ScrollbarThemeData(
             thumbColor: MaterialStateProperty.all(
               Colors.transparent,
@@ -37,11 +37,10 @@ class UrunKatolog extends StatelessWidget {
           ),
           textTheme: const TextTheme(
             
-            headline4: TextStyle(fontSize: 30, color: Colors.black, fontWeight: FontWeight.w500),
-            bodyText1: TextStyle( color: Colors.black, fontWeight: FontWeight.w500),
-            bodyText2: TextStyle( color: Colors.black),
+            headline4: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w500),
+            bodyText1: TextStyle( color: Colors.white, fontWeight: FontWeight.w500),
+            bodyText2: TextStyle( color: Colors.white),
           ),
-          primaryColor: DarkTheme.primaryColor,
           secondaryHeaderColor: DarkTheme.secondaryColor,
           appBarTheme: const AppBarTheme(
             elevation: CustomAppBarTheme.elevation,
