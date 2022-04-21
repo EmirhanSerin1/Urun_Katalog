@@ -34,11 +34,9 @@ class RegisterTextField extends StatelessWidget {
         child: TextFormField(
           inputFormatters: [
             maskTextInputFormatter ??
-                FilteringTextInputFormatter.allow(
-                  RegExp(r'[a-zA-Z ]'),
+                FilteringTextInputFormatter.deny(
+                  RegExp(r'[/\\]'),
                 ),
-    
-          
           ],
           autofocus: false,
           controller: controller,

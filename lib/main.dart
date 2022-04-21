@@ -5,17 +5,12 @@ import 'package:urun_katalog/core/theme/appbar_theme/app_bar_theme.dart';
 import 'package:urun_katalog/core/theme/dark/dark_theme.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 import 'package:urun_katalog/providers/keys.dart';
+import 'package:urun_katalog/providers/token.dart';
 import 'package:urun_katalog/views/login/login.dart';
 
 void main() {
   runApp(
-    MultiProvider(
-      providers: [
-        Provider(create: (_) => Controllers()),
-        Provider(create: (_) => FormKeys()),
-      ],
-      child: const UrunKatolog(),
-    ),
+    const UrunKatolog(),
   );
 }
 
@@ -24,24 +19,31 @@ class UrunKatolog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Urun Katalog',
-      theme: ThemeData.dark().copyWith(
-        scrollbarTheme: ScrollbarThemeData(
-          thumbColor: MaterialStateProperty.all(
-           Colors.transparent,
+    return MultiProvider(
+      providers: [
+        Provider(create: (_) => Controllers()),
+        Provider(create: (_) => FormKeys()),
+        ChangeNotifierProvider(create: (context) => Token())
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Urun Katalog',
+        theme: ThemeData.dark().copyWith(
+          scrollbarTheme: ScrollbarThemeData(
+            thumbColor: MaterialStateProperty.all(
+              Colors.transparent,
+            ),
+          ),
+          primaryColor: DarkTheme.primaryColor,
+          secondaryHeaderColor: DarkTheme.secondaryColor,
+          scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColor,
+          appBarTheme: const AppBarTheme(
+            elevation: CustomAppBarTheme.elevation,
+            color: CustomAppBarTheme.backgroundColor,
           ),
         ),
-        primaryColor: DarkTheme.primaryColor,
-        secondaryHeaderColor: DarkTheme.secondaryColor,
-        scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColor,
-        appBarTheme: const AppBarTheme(
-          elevation: CustomAppBarTheme.elevation,
-          color: CustomAppBarTheme.backgroundColor,
-        ),
+        home: const Login(),
       ),
-      home: const Login(),
     );
   }
 }

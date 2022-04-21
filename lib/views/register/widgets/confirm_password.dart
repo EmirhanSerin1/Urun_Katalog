@@ -20,7 +20,9 @@ class ConfirmPasswordField extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (registerRePasswordController.text != registerRePasswordController.text) {
-            return "Password do not match";
+            return "Confirm Password do not match";
+          }else if(registerRePasswordController.text.isEmpty){
+            return "Confirm Password can not be empty";
           }
           return null;
         },

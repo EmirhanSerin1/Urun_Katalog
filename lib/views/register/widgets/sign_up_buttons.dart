@@ -1,23 +1,38 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:urun_katalog/core/components/page_route.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 import 'package:urun_katalog/providers/keys.dart';
+import 'package:http/http.dart' as http;
+import 'package:urun_katalog/providers/token.dart';
+import 'package:urun_katalog/views/home/home_view.dart';
 
-class SignUpButton extends StatelessWidget {
+class SignUpButton extends StatefulWidget {
   const SignUpButton({Key? key}) : super(key: key);
 
   @override
+  State<SignUpButton> createState() => _SignUpButtonState();
+}
+
+class _SignUpButtonState extends State<SignUpButton> {
+
+  @override
   Widget build(BuildContext context) {
-    final emailController = Provider.of<Controllers>(context).emailController;
+    final emailController =
+        Provider.of<Controllers>(context).registerEmailController;
     final passwordController =
-        Provider.of<Controllers>(context).passwordController;
-    final _loginFormKey = Provider.of<FormKeys>(context).loginFormKey;
+        Provider.of<Controllers>(context).registerPasswordController;
+    final firstName = Provider.of<Controllers>(context).firstNameController;
+    final _registerFormKey = Provider.of<FormKeys>(context).registerFormKey;
     return InkWell(
       onTap: () {
-        if (_loginFormKey.currentState!.validate()) {
-          print(passwordController.text + emailController.text);
+        if (_registerFormKey.currentState!.validate()) {
+          signup(firstName.text, emailController.text, passwordController.text, context);
         }
       },
       child: Container(
@@ -29,9 +44,29 @@ class SignUpButton extends StatelessWidget {
           color: Theme.of(context).primaryColor.withOpacity(0.8),
         ),
         child: Center(
-            child: Text("Sign Up",
-                style: Theme.of(context).textTheme.bodyText2)),
+            child:
+                Text("Sign Up", style: Theme.of(context).textTheme.bodyText2)),
       ),
     );
   }
+
+  signup(String name, String email, String password, BuildContext context) async {
+    print("Calling");
+    Map data = {'email': email, 'password': password, 'name': name};
+    print(data.toString());
+    final response = await http.post(
+      Uri.parse("https://assignment-api.piton.com.tr/api/v1/user/register"),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: data,
+      encoding: Encoding.getByName("utf-8"),
+    );
+
+    print(response.body);
+    Map bodyMap = jsonDecode(response.body);
+    Provider.of<Token>(context, listen: false).tokis(bodyMap["token"].toString());
+  }
+
 }

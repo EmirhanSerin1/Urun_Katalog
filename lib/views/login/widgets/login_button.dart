@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:urun_katalog/core/components/page_route.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 import 'package:urun_katalog/providers/keys.dart';
+import 'package:urun_katalog/views/home/home_view.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class LoginButton extends StatelessWidget {
       onTap: () {
         if (_loginFormKey.currentState!.validate()) {
           print(passwordController.text + emailController.text);
+          Navigator.of(context).push(createRoute(const HomeView(), x: 1, y: 0));
         }
       },
       child: Container(
