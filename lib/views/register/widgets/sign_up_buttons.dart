@@ -20,7 +20,6 @@ class SignUpButton extends StatefulWidget {
 }
 
 class _SignUpButtonState extends State<SignUpButton> {
-
   @override
   Widget build(BuildContext context) {
     final emailController =
@@ -30,9 +29,14 @@ class _SignUpButtonState extends State<SignUpButton> {
     final firstName = Provider.of<Controllers>(context).firstNameController;
     final _registerFormKey = Provider.of<FormKeys>(context).registerFormKey;
     return InkWell(
-      onTap: () {
+      onTap: () async {
         if (_registerFormKey.currentState!.validate()) {
-          signup(firstName.text, emailController.text, passwordController.text, context);
+          http.Response req = await signup(firstName.text, emailController.text,
+              passwordController.text, context);
+          if (req.statusCode == 200) {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (contex) => const HomeView()));
+          }
         }
       },
       child: Container(
@@ -50,23 +54,24 @@ class _SignUpButtonState extends State<SignUpButton> {
     );
   }
 
-  signup(String name, String email, String password, BuildContext context) async {
-    print("Calling");
+  Future<http.Response> signup(
+      String name, String email, String password, BuildContext context) async {
     Map data = {'email': email, 'password': password, 'name': name};
-    print(data.toString());
-    final response = await http.post(
-      Uri.parse("https://assignment-api.piton.com.tr/api/v1/user/register"),
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: data,
-      encoding: Encoding.getByName("utf-8"),
-    );
+    String signUp = "https://assignment-api.piton.com.tr/api/v1/user/register";
+    final response = await http
+        .post(
+          Uri.parse(signUp),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: data,
+          encoding: Encoding.getByName("utf-8"),
+        )
+        .then((value) => Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomeView())));
 
-    print(response.body);
-    Map bodyMap = jsonDecode(response.body);
-    Provider.of<Token>(context, listen: false).tokis(bodyMap["token"].toString());
+    
+    return response;
   }
-
 }
