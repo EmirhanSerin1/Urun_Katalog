@@ -1,11 +1,15 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:urun_katalog/core/constants/paddings/home_paddings.dart';
 import 'package:urun_katalog/models/products.dart';
 import 'package:urun_katalog/providers/token.dart';
 import 'package:urun_katalog/view_model/product_view_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:urun_katalog/views/home/widgets/head_line.dart';
+import 'package:urun_katalog/views/home/widgets/popular_item.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -17,51 +21,68 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   ListProductsViewModel listProductsViewModel = ListProductsViewModel();
   late Future<List> futureAlbum;
+  PageController pageController = PageController();
+  double viewportFraction = 0.7;
+  double pageOffSet = 0;
 
   @override
   void initState() {
     super.initState();
     futureAlbum = fetchPro();
+    pageController =
+        PageController(initialPage: 0, viewportFraction: viewportFraction)
+          ..addListener(() {
+            setState(() {
+              pageOffSet = pageController.page!;
+            });
+          });
   }
 
   @override
   Widget build(BuildContext context) {
     final token = Provider.of<Token>(context, listen: false).tokeis;
+    var selectedIndex = 0;
     return Scaffold(
-      appBar: AppBar(),
-      body: FutureBuilder<List>(
-        future: futureAlbum,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
-          } else {
-            return SizedBox(
-              height: 160,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 2,
-                itemBuilder: (BuildContext context, int index) {
-                  List<dynamic>? datas = snapshot.data;
+      body: ListView(
+        children: [
+          FutureBuilder<List>(
+            future: futureAlbum,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const HeadLine(text: "Popular Books"),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 2.3,
+                      child: PageView.builder(
+                        controller: pageController,
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          List<dynamic>? data = snapshot.data;
 
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      onTap: () {
-                        List<dynamic>? datas = snapshot.data;
-                        print(datas![index]["image"]);
-                      },
-                      child: Container(
-                        width: 110,
-                        color: Colors.red,
-                        // child: Image.network("${"https://assignment-api.piton.com.tr"+"/static/1.jpeg"}"),
+                          double scale = max(
+                              viewportFraction,
+                              (1 - (pageOffSet - index).abs()) +
+                                  viewportFraction);
+                          return PopularItem(
+                            scale: scale,
+                            datas: data!,
+                            index: index,
+                          );
+                        },
                       ),
                     ),
-                  );
-                },
-              ),
-            );
-          }
-        },
+                    const HeadLine(text: "Newest"),
+                  ],
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }
@@ -96,4 +117,6 @@ class _HomeViewState extends State<HomeView> {
       throw Exception('Failed to load album');
     }
   }
+
 }
+

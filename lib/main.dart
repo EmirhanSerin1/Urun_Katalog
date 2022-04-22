@@ -23,20 +23,26 @@ class UrunKatolog extends StatelessWidget {
       providers: [
         Provider(create: (_) => Controllers()),
         Provider(create: (_) => FormKeys()),
-        ChangeNotifierProvider(create: (context) => Token())
+        ChangeNotifierProvider(create: (context) => Token()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Urun Katalog',
-        theme: ThemeData.dark().copyWith(
+        theme: ThemeData.light().copyWith(
           scrollbarTheme: ScrollbarThemeData(
             thumbColor: MaterialStateProperty.all(
               Colors.transparent,
             ),
+          
+          ),
+          textTheme: const TextTheme(
+            
+            headline4: TextStyle(fontSize: 30, color: Colors.black, fontWeight: FontWeight.w500),
+            bodyText1: TextStyle( color: Colors.black, fontWeight: FontWeight.w500),
+            bodyText2: TextStyle( color: Colors.black),
           ),
           primaryColor: DarkTheme.primaryColor,
           secondaryHeaderColor: DarkTheme.secondaryColor,
-          scaffoldBackgroundColor: ThemeColors.scaffoldBackgroundColor,
           appBarTheme: const AppBarTheme(
             elevation: CustomAppBarTheme.elevation,
             color: CustomAppBarTheme.backgroundColor,

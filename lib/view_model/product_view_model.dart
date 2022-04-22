@@ -4,19 +4,19 @@ import 'package:urun_katalog/models/products.dart';
 import 'package:urun_katalog/services/services.dart';
 
 class ListProductsViewModel{
-  List<PicturesViewModel>? products;
+  List<ProductsViewModel>? products;
 
   Future<void> fetchProducts() async{
     final api = await ProductService().fetchProductsApi();
 
-    products = api.map((e) => PicturesViewModel(e)).toList();
+    products = api.map((e) => ProductsViewModel(e)).toList();
   }
 
 }
 
 
-class PicturesViewModel {
+class ProductsViewModel {
   final Product? productModel;
 
-  PicturesViewModel(this.productModel);
+  ProductsViewModel(this.productModel);
 }
