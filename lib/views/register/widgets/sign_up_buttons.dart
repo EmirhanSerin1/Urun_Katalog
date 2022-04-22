@@ -1,16 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:urun_katalog/core/components/page_route.dart';
-import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
-import 'package:urun_katalog/core/constants/texts/login_texts.dart';
-import 'package:urun_katalog/providers/controllers.dart';
-import 'package:urun_katalog/providers/keys.dart';
 import 'package:http/http.dart' as http;
-import 'package:urun_katalog/providers/token.dart';
-import 'package:urun_katalog/views/home/home_view.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/constants/paddings/authentication_paddings.dart';
+import '../../../providers/controllers.dart';
+import '../../../providers/keys.dart';
+import '../../home/home_view.dart';
 
 class SignUpButton extends StatefulWidget {
   const SignUpButton({Key? key}) : super(key: key);

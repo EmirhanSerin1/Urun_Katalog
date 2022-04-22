@@ -4,7 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:urun_katalog/models/user.dart';
 
 Product productFromJson(String str) => Product.fromJson(json.decode(str));
 

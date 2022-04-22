@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:urun_katalog/core/components/images/images.dart';
-import 'package:urun_katalog/core/constants/paddings/home_paddings.dart';
 
 class PopularItem extends StatelessWidget {
   const PopularItem({

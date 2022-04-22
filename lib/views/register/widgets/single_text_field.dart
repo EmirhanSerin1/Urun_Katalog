@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:urun_katalog/core/components/mask/phone_mask.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 
 class RegisterTextField extends StatelessWidget {

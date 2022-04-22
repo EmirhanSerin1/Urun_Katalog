@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:urun_katalog/core/components/page_route.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
@@ -73,7 +72,6 @@ class LoginButton extends StatelessWidget {
     http.Response response =
         await http.post(Uri.parse(loginUrl), headers: headers, body: body);
     
-    print(response.body);
     return response;
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:urun_katalog/core/constants/colors/theme_colors.dart';
 import 'package:urun_katalog/core/theme/appbar_theme/app_bar_theme.dart';
 import 'package:urun_katalog/core/theme/dark/dark_theme.dart';
 import 'package:urun_katalog/providers/controllers.dart';

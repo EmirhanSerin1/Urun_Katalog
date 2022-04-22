@@ -1,15 +1,9 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:urun_katalog/core/constants/paddings/home_paddings.dart';
-import 'package:urun_katalog/models/products.dart';
-import 'package:urun_katalog/providers/token.dart';
 import 'package:urun_katalog/view_model/product_view_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:urun_katalog/views/home/widgets/head_line.dart';
-import 'package:urun_katalog/views/home/widgets/popular_item.dart';
 import 'package:urun_katalog/views/home/widgets/popular_part.dart';
 
 class HomeView extends StatefulWidget {
@@ -41,8 +35,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final token = Provider.of<Token>(context, listen: false).tokeis;
-    var selectedIndex = 0;
+    
     return Scaffold(
       body: Material(
         color: Theme.of(context).primaryColor,
