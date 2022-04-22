@@ -44,6 +44,9 @@ class UrunKatolog extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             elevation: CustomAppBarTheme.elevation,
             color: CustomAppBarTheme.backgroundColor,
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            )
           ),
         ),
         home: const Login(),

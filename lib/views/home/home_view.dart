@@ -37,6 +37,9 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      drawer: const Drawer(),
+      appBar: AppBar(
+      ),
       body: Material(
         color: Theme.of(context).primaryColor,
         child: ListView(
@@ -60,6 +63,7 @@ class _HomeViewState extends State<HomeView> {
                         data: snapshot.data,
                       ),
                       const HeadLine(text: "Newest"),
+
                     ],
                   );
                 }
