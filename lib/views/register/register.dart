@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:urun_katalog/core/components/mask/phone_mask.dart';
-import 'package:urun_katalog/core/components/reg_exps/reg_exps.dart';
+import 'package:urun_katalog/core/constants/mask/phone_mask.dart';
+import 'package:urun_katalog/core/constants/reg_exps/reg_exps.dart';
+import 'package:urun_katalog/core/constants/texts/register_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 import 'package:urun_katalog/providers/keys.dart';
 import 'package:urun_katalog/views/register/widgets/confirm_password.dart';
@@ -15,17 +16,14 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firstNameController =
+    final _firstNameController =
         Provider.of<Controllers>(context).firstNameController;
-    final secondNameController =
+    final _secondNameController =
         Provider.of<Controllers>(context).secondNameController;
-    final registerEmailController =
+    final _registerEmailController =
         Provider.of<Controllers>(context).registerEmailController;
-    final phoneController = Provider.of<Controllers>(context).phoneController;
-    final registerPasswordController =
-        Provider.of<Controllers>(context).registerPasswordController;
-
-    final registerKey = Provider.of<FormKeys>(context).registerFormKey;
+    final _phoneController = Provider.of<Controllers>(context).phoneController;
+    final _registerKey = Provider.of<FormKeys>(context).registerFormKey;
 
     return Material(
       color: Colors.transparent,
@@ -33,7 +31,7 @@ class Register extends StatelessWidget {
         appBar: AppBar(),
         resizeToAvoidBottomInset: true,
         body: Form(
-          key: registerKey,
+          key: _registerKey,
           child: SingleChildScrollView(
             child: Container(
               color: Theme.of(context).primaryColor.withOpacity(0.2),
@@ -54,11 +52,10 @@ class Register extends StatelessWidget {
                     children: [
                       RepaintBoundary(
                         child: RegisterTextField(
-                          hintText: "First Name",
-                          isValidText:
-                              "Please Enter a Valid Name. Minimum 2 Character",
-                          isEmptyText: "First Name Cannot Be Empty",
-                          controller: firstNameController,
+                          hintText: FirstNameTexts.hintText,
+                          isValidText: FirstNameTexts.isValidText,
+                          isEmptyText: FirstNameTexts.isValidText,
+                          controller: _firstNameController,
                           regExp: AllRegExps.nameReg,
                           icon: Icons.person_outlined,
                           keyboardType: TextInputType.name,
@@ -66,21 +63,20 @@ class Register extends StatelessWidget {
                         ),
                       ),
                       RegisterTextField(
-                        hintText: "Second Name",
-                        isValidText:
-                            "Please Enter a Valid Name. Minimum 2 Character",
-                        isEmptyText: "Second Name Cannot Be Empty",
-                        controller: secondNameController,
+                        hintText: SecondNameTexts.hintText,
+                        isValidText: SecondNameTexts.isValidText,
+                        isEmptyText: SecondNameTexts.emptyText,
+                        controller: _secondNameController,
                         regExp: AllRegExps.nameReg,
                         icon: Icons.person_outlined,
                         keyboardType: TextInputType.name,
                         textInputAction: TextInputAction.next,
                       ),
                       RegisterTextField(
-                        hintText: "Email",
-                        isValidText: "Please Enter a Valid Email",
-                        isEmptyText: "Email Cannot Be Empty",
-                        controller: registerEmailController,
+                        hintText: EmailTexts.hintText,
+                        isValidText: EmailTexts.isValidText,
+                        isEmptyText: EmailTexts.emptyText,
+                        controller: _registerEmailController,
                         regExp: AllRegExps.mailReg,
                         icon: Icons.mail_outline_outlined,
                         keyboardType: TextInputType.emailAddress,
@@ -89,10 +85,10 @@ class Register extends StatelessWidget {
                       RegisterTextField(
                         maskTextInputFormatter:
                             PhoneNumberFormatter.maskFormatter,
-                        hintText: "Phone Number",
-                        isValidText: "Please Enter a Phone Number.",
-                        isEmptyText: "Phone Number Cannot Be Empty",
-                        controller: phoneController,
+                        hintText: PhoneNumberTexts.hintText,
+                        isValidText: PhoneNumberTexts.isValidText,
+                        isEmptyText: PhoneNumberTexts.emptyText,
+                        controller: _phoneController,
                         regExp: AllRegExps.phoneNumber,
                         icon: Icons.call_outlined,
                         keyboardType: TextInputType.number,

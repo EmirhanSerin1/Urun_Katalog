@@ -12,6 +12,18 @@ class PasswordTexts{
 }
 
 class LoginButtonTexts{
-  static const String  login = "Login";
+  static const String login = "Login";
+}
 
+class DHAAccountPartTexts{
+  /// Dont have any account
+  static const String dHaveAA = "Don't have an account?";
+  
+  /// Sign up
+  static const String signUp = "Sign up.";
+}
+
+class LoginTexts{
+
+  static const String logIn = "Login";
 }

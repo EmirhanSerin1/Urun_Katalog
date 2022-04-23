@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
+import 'package:urun_katalog/core/constants/text_field_properties/text_field_properties.dart';
 
 class RegisterTextField extends StatelessWidget {
   const RegisterTextField({
@@ -62,16 +63,16 @@ class RegisterTextField extends StatelessWidget {
             contentPadding: AuthenticationPaddings.contentPadding,
             hintText: hintText,
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
-              borderRadius: BorderRadius.circular(32),
+              borderSide: BorderSide(color: Theme.of(context).bottomAppBarColor),
+              borderRadius: TextFieldProperties.focusedBorderRadius,
             ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: TextFieldProperties.borderBorderRadius,
             ),
             enabledBorder: OutlineInputBorder(
               borderSide:
                   BorderSide(color: Theme.of(context).primaryColor),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: TextFieldProperties.enabledBorderRadius,
             ),
           ),
         ),

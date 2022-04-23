@@ -14,7 +14,7 @@ void main() {
 }
 
 class UrunKatolog extends StatelessWidget {
-    const UrunKatolog({Key? key}) : super(key: key);
+  const UrunKatolog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +32,29 @@ class UrunKatolog extends StatelessWidget {
             thumbColor: MaterialStateProperty.all(
               Colors.transparent,
             ),
-          
           ),
+          errorColor: DarkTheme.errorColor,
           scaffoldBackgroundColor: DarkTheme.scaffoldBackgroundColor,
           backgroundColor: DarkTheme.backgroundColor,
           primaryColor: DarkTheme.primaryColor,
           secondaryHeaderColor: DarkTheme.secondaryColor,
+          //It will change
+          bottomAppBarColor: DarkTheme.tealColor,
           textTheme: const TextTheme(
-            headline4: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w500),
-            bodyText1: TextStyle( color: Colors.white, fontWeight: FontWeight.w500),
-            bodyText2: TextStyle( color: Colors.white),
-            caption: TextStyle( color: Colors.white, fontSize: 11),
+            headline4: TextStyle(
+                fontSize: 30, color: Colors.white, fontWeight: FontWeight.w500),
+            bodyText1:
+                TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+            bodyText2: TextStyle(color: Colors.white),
+            caption: TextStyle(color: Colors.white, fontSize: 11),
           ),
-          appBarTheme: const AppBarTheme(
+          appBarTheme:const AppBarTheme(
             toolbarHeight: 50,
             elevation: 2,
-            color: Color(0xFF332940),
-            iconTheme: IconThemeData(
+            color: DarkTheme.secondaryColor,
+            iconTheme:  IconThemeData(
               color: Colors.white,
-            )
+            ),
           ),
         ),
         home: const Login(),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:urun_katalog/core/components/reg_exps/reg_exps.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
+import 'package:urun_katalog/core/constants/reg_exps/reg_exps.dart';
+import 'package:urun_katalog/core/constants/text_field_properties/text_field_properties.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 
@@ -38,16 +39,16 @@ class LoginEmailTextField extends StatelessWidget {
           contentPadding: AuthenticationPaddings.contentPadding,
           hintText: EmailTexts.hintText,
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
-            borderRadius: BorderRadius.circular(32),
+            borderSide: BorderSide(color: Theme.of(context).bottomAppBarColor),
+            borderRadius: TextFieldProperties.focusedBorderRadius,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: TextFieldProperties.borderBorderRadius,
           ),
           enabledBorder: OutlineInputBorder(
             borderSide:
                 BorderSide(color: Theme.of(context).primaryColor),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: TextFieldProperties.enabledBorderRadius,
           ),
         ),
       ),

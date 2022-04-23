@@ -14,15 +14,15 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _loginFormKey = Provider.of<FormKeys>(context).loginFormKey;
-    final emailController = Provider.of<Controllers>(context).emailController;
-    final passwwordController =
+    final _emailController = Provider.of<Controllers>(context).emailController;
+    final _passwwordController =
         Provider.of<Controllers>(context).passwordController;
 
     return WillPopScope(
       onWillPop: () async {
         FocusScope.of(context).unfocus();
-        emailController.clear();
-        passwwordController.clear();
+        _emailController.clear();
+        _passwwordController.clear();
         return false;
       },
       child: Scaffold(

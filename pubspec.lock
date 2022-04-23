@@ -184,6 +184,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  like_button:
+    dependency: "direct main"
+    description:
+      name: like_button
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
   lints:
     dependency: transitive
     description:
@@ -233,6 +240,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  palette_generator:
+    dependency: "direct main"
+    description:
+      name: palette_generator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3"
   path:
     dependency: transitive
     description:
