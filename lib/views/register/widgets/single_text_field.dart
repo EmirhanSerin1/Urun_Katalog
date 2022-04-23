@@ -51,17 +51,18 @@ class RegisterTextField extends StatelessWidget {
           },
           onSaved: (value) {
             controller.text = value!;
+            
           },
           textInputAction: textInputAction,
           decoration: InputDecoration(
             prefixIcon: Icon(
               icon,
-              color: Theme.of(context).secondaryHeaderColor,
+              color: Theme.of(context).primaryColor,
             ),
             contentPadding: AuthenticationPaddings.contentPadding,
             hintText: hintText,
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+              borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
               borderRadius: BorderRadius.circular(32),
             ),
             border: OutlineInputBorder(
@@ -69,7 +70,7 @@ class RegisterTextField extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderSide:
-                  BorderSide(color: Theme.of(context).secondaryHeaderColor),
+                  BorderSide(color: Theme.of(context).primaryColor),
               borderRadius: BorderRadius.circular(10),
             ),
           ),

@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:urun_katalog/core/components/images/images.dart';
+import 'package:urun_katalog/core/theme/dark/dark_theme.dart';
 import 'package:urun_katalog/view_model/product_view_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:urun_katalog/views/home/widgets/head_line.dart';
+import 'package:urun_katalog/views/home/widgets/newest_part.dart';
 import 'package:urun_katalog/views/home/widgets/popular_part.dart';
 
 class HomeView extends StatefulWidget {
@@ -41,91 +43,40 @@ class _HomeViewState extends State<HomeView> {
       drawer: const Drawer(),
       appBar: AppBar(),
       body: Material(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: ListView(
           children: [
-            FutureBuilder<List>(
-              future: futureAlbum,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                } else {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const HeadLine(text: "Popular Books"),
-                      PopularItemsPart(
-                        pageController: pageController,
-                        viewportFraction: viewportFraction,
-                        pageOffSet: pageOffSet,
-                        itemLength: snapshot.data!.length,
-                        data: snapshot.data,
-                      ),
-                      const HeadLine(text: "Newest"),
-                      SizedBox(
-                        height: 350,
-                        child: ListView.builder(
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 110,
-                                color: Colors.red.withOpacity(0.3),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: CachedNetworkImage(
-                                          imageUrl:
-                                              ProductImages.images[index]),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 2),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                1.5,
-                                            child: Text(
-                                                snapshot.data![index]["name"]),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 2),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                1.5,
-                                            child: Text(snapshot.data![index]
-                                                ["description"], overflow: TextOverflow.ellipsis,),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
+            ColoredBox(
+              //  We are using material dark theme which means backgrounColor + / 20%primaryColor. 
+              color: Theme.of(context).primaryColor.withOpacity(0.2),
+              child: FutureBuilder<List>(
+                future: futureAlbum,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const HeadLine(text: "Popular Books"),
+                        PopularItemsPart(
+                          pageController: pageController,
+                          viewportFraction: viewportFraction,
+                          pageOffSet: pageOffSet,
+                          itemLength: snapshot.data!.length,
+                          data: snapshot.data,
                         ),
-                      )
-                    ],
-                  );
-                }
-              },
+                        const HeadLine(text: "Newest"),
+                        NewestPart(
+                          index: snapshot.data!.length,
+                          snapshot: snapshot,
+                        ),
+                      ],
+                    );
+                  }
+                },
+              ),
             ),
           ],
         ),

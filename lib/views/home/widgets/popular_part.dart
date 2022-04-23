@@ -36,7 +36,6 @@ class PopularItemsPart extends StatelessWidget {
                   top: 50 - scale * 25, bottom: 50 - scale * 25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Theme.of(context).primaryColor,
               ),
               child: PopularItem(
                 scale: scale,

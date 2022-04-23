@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:urun_katalog/core/components/snackbar/snackbar.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
@@ -20,31 +21,22 @@ class LoginButton extends StatelessWidget {
         Provider.of<Controllers>(context).passwordController;
     final _loginFormKey = Provider.of<FormKeys>(context).loginFormKey;
     return InkWell(
-      onTap: () async{
-        final snackBar = SnackBar(
-            content: const Text("Please Try Again"),
-            action: SnackBarAction(
-              label: 'Undo',
-              onPressed: () {
-                // Some code to undo the change.
-              },
-            ),
-          );
+      onTap: () async {
+        
         if (_loginFormKey.currentState!.validate()) {
           http.Response req = await login(
               emailController.text.trim(), passwordController.text.trim());
 
           Map bodyMap = jsonDecode(req.body);
           Provider.of<Token>(context, listen: false)
-            .tokis(bodyMap["token"].toString());
-          
+              .tokis(bodyMap["token"].toString());
 
-          if(req.statusCode == 200 && bodyMap["token"] != ""){
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const HomeView()));
-          }else{
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          if (req.statusCode == 200 && bodyMap["token"] != "") {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const HomeView()));
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar.snackBar);
           }
-          
         }
       },
       child: Container(
@@ -56,8 +48,11 @@ class LoginButton extends StatelessWidget {
           color: Theme.of(context).primaryColor,
         ),
         child: Center(
-            child: Text(LoginButtonTexts.login,
-                style: Theme.of(context).textTheme.bodyText2)),
+          child: Text(
+            LoginButtonTexts.login,
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w500),
+          ),
+        ),
       ),
     );
   }
@@ -71,7 +66,7 @@ class LoginButton extends StatelessWidget {
     };
     http.Response response =
         await http.post(Uri.parse(loginUrl), headers: headers, body: body);
-    
+
     return response;
   }
 }

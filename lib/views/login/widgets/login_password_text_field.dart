@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:urun_katalog/core/components/reg_exps/reg_exps.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 
-class PasswordTextFeild extends StatelessWidget {
-  const PasswordTextFeild({Key? key}) : super(key: key);
+class PasswordTextField extends StatelessWidget {
+  const PasswordTextField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class PasswordTextFeild extends StatelessWidget {
         autofocus: false,
         controller: passwordController,
         validator: (value) {
-          RegExp regExp = RegExp(r'^[a-zA-Z0-9].{5,}$');
+          RegExp regExp = AllRegExps.password;
           if (value!.isEmpty) {
             return PasswordTexts.enterPassword;
           }
@@ -32,16 +33,16 @@ class PasswordTextFeild extends StatelessWidget {
           passwordController.text = value!;
         },
         maxLength: 20,
-        textInputAction: TextInputAction.done,
+        textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           counterText: "",
           prefixIcon: Icon(Icons.vpn_key,
-              color: Theme.of(context).secondaryHeaderColor),
+              color: Theme.of(context).primaryColor),
           contentPadding: AuthenticationPaddings.contentPadding,
           hintText: PasswordTexts.hintText,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).secondaryHeaderColor,
             ),
             borderRadius: BorderRadius.circular(32),
           ),
@@ -49,7 +50,7 @@ class PasswordTextFeild extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
+            borderSide: BorderSide(color: Theme.of(context).primaryColor),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
