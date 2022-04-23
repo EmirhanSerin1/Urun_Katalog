@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+
+//Example User
+
 class DrawerTop extends StatelessWidget {
   const DrawerTop({Key? key}) : super(key: key);
 
@@ -13,7 +16,7 @@ class DrawerTop extends StatelessWidget {
             
               image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage(
+            image: CachedNetworkImageProvider(
               "https://images.pexels.com/photos/3921000/pexels-photo-3921000.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             ),
           )),

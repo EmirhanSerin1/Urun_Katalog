@@ -1,4 +1,4 @@
-class MovieDetailsBoxProperties{
+class ProductDetailsBoxProperties{
 
   static double minHeigt = 150;
   static double upMovieName = 50;

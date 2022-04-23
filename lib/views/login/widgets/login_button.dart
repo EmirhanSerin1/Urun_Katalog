@@ -8,6 +8,7 @@ import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 import 'package:urun_katalog/providers/keys.dart';
 import 'package:urun_katalog/providers/token.dart';
+import 'package:urun_katalog/services/services.dart';
 import 'package:urun_katalog/views/home/home_view.dart';
 import 'package:http/http.dart' as http;
 
@@ -57,16 +58,4 @@ class LoginButton extends StatelessWidget {
     );
   }
 
-  Future<http.Response> login(String email, String password) async {
-    var body = jsonEncode({'email': email, 'password': password});
-    String loginUrl = "https://assignment-api.piton.com.tr/api/v1/user/login";
-    Map<String, String> headers = {
-      "Accept": "application/json",
-      "Content-Type": "application/json; charset=UTF-8"
-    };
-    http.Response response =
-        await http.post(Uri.parse(loginUrl), headers: headers, body: body);
-
-    return response;
-  }
 }

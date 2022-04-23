@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
+import 'package:urun_katalog/core/constants/text_field_properties/text_field_properties.dart';
+import 'package:urun_katalog/core/constants/texts/register_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
 
 class ConfirmPasswordField extends StatelessWidget {
@@ -20,9 +22,9 @@ class ConfirmPasswordField extends StatelessWidget {
         keyboardType: TextInputType.visiblePassword,
         validator: (value) {
           if (registerRePasswordController.text != registerRePasswordController.text) {
-            return "Confirm Password do not match";
+            return ConfirmPasswordTexts.isMatch;
           }else if(registerRePasswordController.text.isEmpty){
-            return "Confirm Password can not be empty";
+            return ConfirmPasswordTexts.emptyText;
           }
           return null;
         },
@@ -36,18 +38,18 @@ class ConfirmPasswordField extends StatelessWidget {
             color: Theme.of(context).primaryColor,
           ),
           contentPadding: AuthenticationPaddings.contentPadding,
-          hintText: "Confirm Password ",
+          hintText: ConfirmPasswordTexts.hintText,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Theme.of(context).bottomAppBarColor),
-            borderRadius: BorderRadius.circular(32),
+            borderRadius: TextFieldProperties.focusedBorderRadius,
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: TextFieldProperties.borderBorderRadius,
           ),
           enabledBorder: OutlineInputBorder(
             borderSide:
                 BorderSide(color: Theme.of(context).primaryColor),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: TextFieldProperties.enabledBorderRadius,
           ),
         ),
       ),

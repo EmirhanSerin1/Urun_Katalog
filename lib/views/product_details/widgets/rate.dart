@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:urun_katalog/core/constants/texts/product_details_texts.dart';
 
 class Rate extends StatelessWidget {
   const Rate({
@@ -12,7 +13,7 @@ class Rate extends StatelessWidget {
         rate(context),
         const Text("-  "),
         Text(
-          "Result of 1.532  votes",
+          RateTexts.resultOf,
           style: Theme.of(context).textTheme.caption,
         ),
       ],
@@ -28,7 +29,7 @@ class Rate extends StatelessWidget {
             border: Border.all(width: 1, color: Colors.grey),
             borderRadius: BorderRadius.circular(2)),
         child: Text(
-          "7.2",
+          RateTexts.rate,
           style: Theme.of(context)
               .textTheme
               .caption

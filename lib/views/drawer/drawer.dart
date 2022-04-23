@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:urun_katalog/core/constants/texts/drawer_texts.dart';
 import 'package:urun_katalog/views/drawer/widgets/drawer_top.dart';
 import 'package:urun_katalog/views/drawer/widgets/log_out.dart';
 import 'package:urun_katalog/views/drawer/widgets/menu_item.dart';
@@ -24,9 +25,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
           child: ListView(
             children: const [
               DrawerTop(),
-              MenuItem(icon: Icons.account_circle, text: "My Account"),
+              MenuItem(icon: Icons.account_circle, text: DrawerTexts.account),
               // Divider(),
-              MenuItem(icon: Icons.settings, text: "Settings"),
+              MenuItem(icon: Icons.settings, text: DrawerTexts.settings),
               Divider(),
               // Spacer(),
               LogOut(),

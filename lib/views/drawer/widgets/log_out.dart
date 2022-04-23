@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:urun_katalog/core/constants/paddings/paddings_drawer.dart';
+import 'package:urun_katalog/core/constants/texts/drawer_texts.dart';
 import 'package:urun_katalog/views/drawer/widgets/log_out_alert_dialog.dart';
 
 class LogOut extends StatelessWidget {
@@ -20,7 +21,7 @@ class LogOut extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text("Log Out"),
+                const Text(LogOutTexts.logout),
                 InkWell(
                   onTap: () => showAlertdialog(context),
                   child: Icon(

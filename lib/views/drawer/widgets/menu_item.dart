@@ -48,7 +48,3 @@ class MenuItem extends StatelessWidget {
     );
   }
 }
-// TextStyle(
-//                 color: Theme.of(context).iconTheme.color,
-//                 fontWeight: FontWeight.w500,
-//               ),

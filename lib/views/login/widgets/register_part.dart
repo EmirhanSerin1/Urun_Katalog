@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:urun_katalog/core/components/page_route.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
+import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/views/register/register.dart';
 
 class RegisterPart extends StatelessWidget {
@@ -14,7 +15,7 @@ class RegisterPart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Don't have an account?",
+            DHAAccountPartTexts.dHaveAA,
             style: Theme.of(context)
                 .textTheme
                 .bodyText1!
@@ -26,11 +27,12 @@ class RegisterPart extends StatelessWidget {
                     .push(createRoute(const Register(), x: 0, y: 1));
               },
               child: Text(
-                "Sign up.",
+                DHAAccountPartTexts.signUp,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                    color: Theme.of(context).bottomAppBarColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15),
+                      color: Theme.of(context).bottomAppBarColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
               ))
         ],
       ),

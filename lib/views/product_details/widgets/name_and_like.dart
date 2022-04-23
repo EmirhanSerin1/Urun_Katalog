@@ -2,9 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
-import 'package:provider/provider.dart';
 import 'package:urun_katalog/core/constants/paddings/paddings_movie_details.dart';
-import 'package:urun_katalog/providers/token.dart';
+import 'package:urun_katalog/services/services.dart';
 import 'package:urun_katalog/views/product_details/widgets/rate.dart';
 import 'package:http/http.dart' as http;
 
@@ -83,39 +82,4 @@ class _NameAndLikeState extends State<NameAndLike> {
     }
   }
 
-  like(final List<dynamic>? datas, int index, String token, bool like) async {
-    var id = datas![index]["id"];
-    var body = jsonEncode({'productId': id});
-    String likeUrl = "https://assignment-api.piton.com.tr/api/v1/product/like";
-    String unLikeUrl =
-        "https://assignment-api.piton.com.tr/api/v1/product/unlike";
-    Map<String, String> headers = {
-      "Accept": "application/json",
-      "access-token": token,
-      "Content-Type": "application/json"
-    };
-
-    http.Response response;
-
-    //Checking like. If just liked sending like request, if not sending unLike request
-    if (like == false) {
-      response =
-          await http.post(Uri.parse(likeUrl), headers: headers, body: body);
-    } else {
-      response =
-          await http.post(Uri.parse(unLikeUrl), headers: headers, body: body);
-    }
-
-    //status code checking
-    if (response.statusCode == 200) {
-      print(response.body);
-      return true;
-    } else if (response.statusCode == 401) {
-      print(response.body);
-      return false;
-    } else if (response.statusCode == 404) {
-      print(response.body);
-      return false;
-    }
-  }
 }
