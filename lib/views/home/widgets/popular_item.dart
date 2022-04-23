@@ -30,8 +30,7 @@ class PopularItem extends StatelessWidget {
         // print(datas[index]["price"]);
         // print(datas[index]["description"]);
         // print(datas[index]["image"]);
-        // print(datas[index]["id"]);
-        // print(datas[index]["timeStamp"]);
+        // print(datas[index]);
       },
       child: Material(
         color: Colors.transparent,

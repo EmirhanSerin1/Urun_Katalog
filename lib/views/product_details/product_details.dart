@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
+import 'package:provider/provider.dart';
 import 'package:urun_katalog/core/components/images/images.dart';
 import 'package:urun_katalog/core/constants/box_properties/box_prop_movie_details.dart';
 import 'package:urun_katalog/core/constants/paddings/paddings_movie_details.dart';
+import 'package:urun_katalog/providers/token.dart';
 import 'package:urun_katalog/views/product_details/widgets/overview.dart';
 import 'package:urun_katalog/views/product_details/widgets/name_and_like.dart';
 
@@ -24,6 +26,7 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
+    var _token = Provider.of<Token>(context, listen: false).tokeis;
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: Theme.of(context).backgroundColor,
@@ -55,6 +58,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ),
                 NameAndLike(
+                  token: _token!,
                   datas: widget.datas,
                   index: widget.index,
                 ),

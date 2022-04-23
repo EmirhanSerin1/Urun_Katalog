@@ -1,10 +1,6 @@
 import 'dart:convert';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:urun_katalog/core/components/images/images.dart';
-import 'package:urun_katalog/core/theme/dark/dark_theme.dart';
-import 'package:urun_katalog/view_model/product_view_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:urun_katalog/views/drawer/drawer.dart';
 import 'package:urun_katalog/views/home/widgets/head_line.dart';
@@ -19,7 +15,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  ListProductsViewModel listProductsViewModel = ListProductsViewModel();
   late Future<List> futureAlbum;
   PageController pageController = PageController();
   double viewportFraction = 0.6;
