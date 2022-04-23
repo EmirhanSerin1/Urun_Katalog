@@ -17,10 +17,12 @@ class ConfirmPasswordField extends StatelessWidget {
         obscureText: true,
         autofocus: false,
         controller: registerRePasswordController,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.visiblePassword,
         validator: (value) {
           if (registerRePasswordController.text != registerRePasswordController.text) {
-            return "Password do not match";
+            return "Confirm Password do not match";
+          }else if(registerRePasswordController.text.isEmpty){
+            return "Confirm Password can not be empty";
           }
           return null;
         },
@@ -31,12 +33,12 @@ class ConfirmPasswordField extends StatelessWidget {
         decoration:InputDecoration(
           prefixIcon: Icon(
             Icons.key_outlined,
-            color: Theme.of(context).secondaryHeaderColor,
+            color: Theme.of(context).primaryColor,
           ),
           contentPadding: AuthenticationPaddings.contentPadding,
           hintText: "Confirm Password ",
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).primaryColor),
+            borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
             borderRadius: BorderRadius.circular(32),
           ),
           border: OutlineInputBorder(
@@ -44,7 +46,7 @@ class ConfirmPasswordField extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(color: Theme.of(context).secondaryHeaderColor),
+                BorderSide(color: Theme.of(context).primaryColor),
             borderRadius: BorderRadius.circular(10),
           ),
         ),

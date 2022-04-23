@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:urun_katalog/core/components/mask/phone_mask.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 
 class RegisterTextField extends StatelessWidget {
@@ -34,11 +33,9 @@ class RegisterTextField extends StatelessWidget {
         child: TextFormField(
           inputFormatters: [
             maskTextInputFormatter ??
-                FilteringTextInputFormatter.allow(
-                  RegExp(r'[a-zA-Z ]'),
+                FilteringTextInputFormatter.deny(
+                  RegExp(r'[/\\]'),
                 ),
-    
-          
           ],
           autofocus: false,
           controller: controller,
@@ -54,17 +51,18 @@ class RegisterTextField extends StatelessWidget {
           },
           onSaved: (value) {
             controller.text = value!;
+            
           },
           textInputAction: textInputAction,
           decoration: InputDecoration(
             prefixIcon: Icon(
               icon,
-              color: Theme.of(context).secondaryHeaderColor,
+              color: Theme.of(context).primaryColor,
             ),
             contentPadding: AuthenticationPaddings.contentPadding,
             hintText: hintText,
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+              borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
               borderRadius: BorderRadius.circular(32),
             ),
             border: OutlineInputBorder(
@@ -72,7 +70,7 @@ class RegisterTextField extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderSide:
-                  BorderSide(color: Theme.of(context).secondaryHeaderColor),
+                  BorderSide(color: Theme.of(context).primaryColor),
               borderRadius: BorderRadius.circular(10),
             ),
           ),

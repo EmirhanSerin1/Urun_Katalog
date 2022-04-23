@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:urun_katalog/core/components/reg_exps/reg_exps.dart';
 import 'package:urun_katalog/core/constants/paddings/authentication_paddings.dart';
 import 'package:urun_katalog/core/constants/texts/login_texts.dart';
 import 'package:urun_katalog/providers/controllers.dart';
@@ -21,8 +22,7 @@ class LoginEmailTextField extends StatelessWidget {
           if (value!.isEmpty) {
             return EmailTexts.enterMail;
           }
-          if (!RegExp(
-                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+          if (!AllRegExps.mailReg
               .hasMatch(emailController.text)) {
             return EmailTexts.validMail;
           }
@@ -34,11 +34,11 @@ class LoginEmailTextField extends StatelessWidget {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           prefixIcon:
-              Icon(Icons.mail, color: Theme.of(context).secondaryHeaderColor),
+              Icon(Icons.mail, color: Theme.of(context).primaryColor),
           contentPadding: AuthenticationPaddings.contentPadding,
           hintText: EmailTexts.hintText,
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).primaryColor),
+            borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
             borderRadius: BorderRadius.circular(32),
           ),
           border: OutlineInputBorder(
@@ -46,7 +46,7 @@ class LoginEmailTextField extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(color: Theme.of(context).secondaryHeaderColor),
+                BorderSide(color: Theme.of(context).primaryColor),
             borderRadius: BorderRadius.circular(10),
           ),
         ),

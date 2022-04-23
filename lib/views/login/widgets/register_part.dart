@@ -18,7 +18,7 @@ class RegisterPart extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodyText1!
-                .copyWith(color: Colors.white.withOpacity(0.6)),
+                .copyWith(color: Colors.white),
           ),
           TextButton(
               onPressed: () {
