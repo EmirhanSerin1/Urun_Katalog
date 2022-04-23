@@ -42,7 +42,7 @@ class PasswordTextField extends StatelessWidget {
           hintText: PasswordTexts.hintText,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Theme.of(context).secondaryHeaderColor,
+              color: Theme.of(context).bottomAppBarColor,
             ),
             borderRadius: BorderRadius.circular(32),
           ),

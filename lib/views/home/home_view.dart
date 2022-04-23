@@ -48,30 +48,43 @@ class _HomeViewState extends State<HomeView> {
         child: ListView(
           children: [
             ColoredBox(
-              //  We are using material dark theme which means backgrounColor + / 20%primaryColor. 
+              //  We are using material dark theme which means backgrounColor + / 20%primaryColor.
               color: Theme.of(context).primaryColor.withOpacity(0.2),
               child: FutureBuilder<List>(
                 future: futureAlbum,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator();
+                    return  SizedBox(
+
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
+                      child: Center(
+                        child:  CircularProgressIndicator(),
+                      ),
+                    );
                   } else {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const HeadLine(text: "Popular Books"),
-                        PopularItemsPart(
-                          pageController: pageController,
-                          viewportFraction: viewportFraction,
-                          pageOffSet: pageOffSet,
-                          itemLength: snapshot.data!.length,
-                          data: snapshot.data,
+                        //RepaintBoundary: If the widget re-paint itself, It will re-paint ->
+                        //only the widget related to RepaintBoundary
+                        RepaintBoundary(
+                          child: PopularItemsPart(
+                            pageController: pageController,
+                            viewportFraction: viewportFraction,
+                            pageOffSet: pageOffSet,
+                            itemLength: snapshot.data!.length,
+                            data: snapshot.data,
+                          ),
                         ),
                         const HeadLine(text: "Newest"),
-                        NewestPart(
-                          itemCount: snapshot.data!.length,
-                          snapshot: snapshot,
+                        RepaintBoundary(
+                          child: NewestPart(
+                            itemCount: snapshot.data!.length,
+                            snapshot: snapshot,
+                          ),
                         ),
                       ],
                     );

@@ -34,7 +34,9 @@ dependencies:
     sdk: flutter
   html: ^0.15.0
   intl: ^0.17.0
+  like_button: ^2.0.4
   mask_text_input_formatter: ^2.3.0
+  palette_generator: ^0.3.3
   provider: ^6.0.2
   shared_preferences: ^2.0.13
 

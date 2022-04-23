@@ -38,7 +38,7 @@ class ConfirmPasswordField extends StatelessWidget {
           contentPadding: AuthenticationPaddings.contentPadding,
           hintText: "Confirm Password ",
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).secondaryHeaderColor),
+            borderSide: BorderSide(color: Theme.of(context).bottomAppBarColor),
             borderRadius: BorderRadius.circular(32),
           ),
           border: OutlineInputBorder(

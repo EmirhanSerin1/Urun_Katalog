@@ -7,28 +7,30 @@ class LogOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: PaddingMenuItem.margin,
-      padding: PaddingMenuItem.padding,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.transparent,
-          border: Border.all(color: Theme.of(context).primaryColor, width: 1)),
-      height: 50,
-      width: double.infinity,
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text("Log Out"),
-            InkWell(
-              onTap: () => showAlertdialog(context),
-              child: Icon(
-                Icons.power_settings_new,
-                color: Theme.of(context).errorColor,
-              ),
+    return Padding(
+      padding: PaddingMenuItem.margin,
+      child: Material(
+        elevation: 3,
+        child: Container(
+          padding: PaddingMenuItem.padding,
+          color: Theme.of(context).secondaryHeaderColor,
+          height: 50,
+          width: double.infinity,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text("Log Out"),
+                InkWell(
+                  onTap: () => showAlertdialog(context),
+                  child: Icon(
+                    Icons.power_settings_new,
+                    color: Theme.of(context).errorColor,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

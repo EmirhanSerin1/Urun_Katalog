@@ -15,17 +15,14 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firstNameController =
+    final _firstNameController =
         Provider.of<Controllers>(context).firstNameController;
-    final secondNameController =
+    final _secondNameController =
         Provider.of<Controllers>(context).secondNameController;
-    final registerEmailController =
+    final _registerEmailController =
         Provider.of<Controllers>(context).registerEmailController;
-    final phoneController = Provider.of<Controllers>(context).phoneController;
-    final registerPasswordController =
-        Provider.of<Controllers>(context).registerPasswordController;
-
-    final registerKey = Provider.of<FormKeys>(context).registerFormKey;
+    final _phoneController = Provider.of<Controllers>(context).phoneController;
+    final _registerKey = Provider.of<FormKeys>(context).registerFormKey;
 
     return Material(
       color: Colors.transparent,
@@ -33,7 +30,7 @@ class Register extends StatelessWidget {
         appBar: AppBar(),
         resizeToAvoidBottomInset: true,
         body: Form(
-          key: registerKey,
+          key: _registerKey,
           child: SingleChildScrollView(
             child: Container(
               color: Theme.of(context).primaryColor.withOpacity(0.2),
@@ -58,7 +55,7 @@ class Register extends StatelessWidget {
                           isValidText:
                               "Please Enter a Valid Name. Minimum 2 Character",
                           isEmptyText: "First Name Cannot Be Empty",
-                          controller: firstNameController,
+                          controller: _firstNameController,
                           regExp: AllRegExps.nameReg,
                           icon: Icons.person_outlined,
                           keyboardType: TextInputType.name,
@@ -70,7 +67,7 @@ class Register extends StatelessWidget {
                         isValidText:
                             "Please Enter a Valid Name. Minimum 2 Character",
                         isEmptyText: "Second Name Cannot Be Empty",
-                        controller: secondNameController,
+                        controller: _secondNameController,
                         regExp: AllRegExps.nameReg,
                         icon: Icons.person_outlined,
                         keyboardType: TextInputType.name,
@@ -80,7 +77,7 @@ class Register extends StatelessWidget {
                         hintText: "Email",
                         isValidText: "Please Enter a Valid Email",
                         isEmptyText: "Email Cannot Be Empty",
-                        controller: registerEmailController,
+                        controller: _registerEmailController,
                         regExp: AllRegExps.mailReg,
                         icon: Icons.mail_outline_outlined,
                         keyboardType: TextInputType.emailAddress,
@@ -92,7 +89,7 @@ class Register extends StatelessWidget {
                         hintText: "Phone Number",
                         isValidText: "Please Enter a Phone Number.",
                         isEmptyText: "Phone Number Cannot Be Empty",
-                        controller: phoneController,
+                        controller: _phoneController,
                         regExp: AllRegExps.phoneNumber,
                         icon: Icons.call_outlined,
                         keyboardType: TextInputType.number,

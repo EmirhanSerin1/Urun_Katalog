@@ -28,7 +28,7 @@ class RegisterPart extends StatelessWidget {
               child: Text(
                 "Sign up.",
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                    color: Theme.of(context).secondaryHeaderColor,
+                    color: Theme.of(context).bottomAppBarColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 15),
               ))

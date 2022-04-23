@@ -19,26 +19,30 @@ class MenuItem extends StatelessWidget {
         // Navigator.of(context)
         //     .push(MaterialPageRoute(builder: (context) => widget));
       },
-      child: Container(
-        margin: PaddingMenuItem.margin,
-        padding: PaddingMenuItem.padding,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: Colors.transparent,
-          border: Border.all(color: Theme.of(context).primaryColor, width: 1),
-        ),
-        child: Row(
-          children: [
-            Icon(
-              icon,
-              color: Theme.of(context).iconTheme.color!.withOpacity(0.8),
+      child: Padding(
+        padding: PaddingMenuItem.margin,
+        child: Material(
+          elevation: 2,
+          child: Container(
+            padding: PaddingMenuItem.padding,
+            color: Theme.of(context).secondaryHeaderColor,
+            child: Row(
+              children: [
+                Icon(
+                  icon,
+                  color: Theme.of(context).iconTheme.color!.withOpacity(0.8),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  text,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2!
+                      .copyWith(color: Colors.white.withOpacity(0.8)),
+                ),
+              ],
             ),
-            const SizedBox(width: 10),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.bodyText2!.copyWith(color: Colors.white.withOpacity(0.8)),
-            ),
-          ],
+          ),
         ),
       ),
     );
