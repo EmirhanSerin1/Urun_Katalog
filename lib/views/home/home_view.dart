@@ -69,7 +69,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         const HeadLine(text: "Newest"),
                         NewestPart(
-                          index: snapshot.data!.length,
+                          itemCount: snapshot.data!.length,
                           snapshot: snapshot,
                         ),
                       ],

@@ -42,6 +42,7 @@ class UrunKatolog extends StatelessWidget {
             headline4: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.w500),
             bodyText1: TextStyle( color: Colors.white, fontWeight: FontWeight.w500),
             bodyText2: TextStyle( color: Colors.white),
+            caption: TextStyle( color: Colors.white, fontSize: 11),
           ),
           appBarTheme: const AppBarTheme(
             toolbarHeight: 50,
