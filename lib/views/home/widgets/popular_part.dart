@@ -24,6 +24,7 @@ class PopularItemsPart extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height / 2.3,
       child: PageView.builder(
+        itemCount: itemLength,
         controller: pageController,
         itemBuilder: (context, index) {
           double scale = max(viewportFraction,

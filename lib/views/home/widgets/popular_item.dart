@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:urun_katalog/core/components/images/images.dart';
 
@@ -29,7 +30,7 @@ class PopularItem extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(ProductImages.images[index],), fit: BoxFit.contain
+              image: CachedNetworkImageProvider(ProductImages.images[index]), fit: BoxFit.contain
             ),
           ),
         ),
