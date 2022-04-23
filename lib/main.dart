@@ -34,6 +34,7 @@ class UrunKatolog extends StatelessWidget {
             ),
           
           ),
+          errorColor: DarkTheme.errorColor,
           scaffoldBackgroundColor: DarkTheme.scaffoldBackgroundColor,
           backgroundColor: DarkTheme.backgroundColor,
           primaryColor: DarkTheme.primaryColor,

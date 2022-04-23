@@ -6,6 +6,7 @@ import 'package:urun_katalog/core/components/images/images.dart';
 import 'package:urun_katalog/core/theme/dark/dark_theme.dart';
 import 'package:urun_katalog/view_model/product_view_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:urun_katalog/views/drawer/drawer.dart';
 import 'package:urun_katalog/views/home/widgets/head_line.dart';
 import 'package:urun_katalog/views/home/widgets/newest_part.dart';
 import 'package:urun_katalog/views/home/widgets/popular_part.dart';
@@ -40,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: const CustomDrawer(),
       appBar: AppBar(),
       body: Material(
         color: Theme.of(context).scaffoldBackgroundColor,
