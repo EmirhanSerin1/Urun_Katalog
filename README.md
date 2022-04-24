@@ -28,10 +28,9 @@ Projede kullandığım bazı ayrıntılar.
 
 - Uygulama video Youtube Link => https://www.youtube.com/embed/bFg1Canvodc
 
-![https://www.youtube.com/embed/bFg1Canvodc](https://www.youtube.com/embed/bFg1Canvodc)
 
 
-
+[<img src="assets/screenshots/login.jpg" width="50%">](https://www.youtube.com/embed/bFg1Canvodc "Now in Android: 55")
 
 <p float="left">
   <img src="assets/screenshots/login.jpg" width="200" >
