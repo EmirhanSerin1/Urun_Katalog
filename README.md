@@ -29,8 +29,9 @@ Projede kullandığım bazı ayrıntılar.
 - Uygulama video Youtube Link => https://www.youtube.com/embed/bFg1Canvodc
 
 
-##Urun katolog Video
-izlemek için lütfen tıklayın
+## Urun katolog Video
+
+-İzlemek için lütfen tıklayın
 
 [<img src="assets/screenshots/login.jpg" width="70%">](https://www.youtube.com/embed/bFg1Canvodc "Now in Android: 55")
 
