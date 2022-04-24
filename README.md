@@ -27,6 +27,8 @@ Projede kullandığım bazı ayrıntılar.
 - Ekran kaydının sonunda kendi yaptığım diğer uygulamalardan kısa bir kesit ekledim.
 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bFg1Canvodc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 <p float="left">
@@ -41,5 +43,7 @@ Projede kullandığım bazı ayrıntılar.
   <img src="assets/screenshots/details_withlike.jpg" width="200" >
   <img src="assets/screenshots/logout.jpg" width="200" >
 </p>
+
+
 
 
