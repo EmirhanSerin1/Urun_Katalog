@@ -89,7 +89,7 @@ class Register extends StatelessWidget {
                         isValidText: PhoneNumberTexts.isValidText,
                         isEmptyText: PhoneNumberTexts.emptyText,
                         controller: _phoneController,
-                        regExp: AllRegExps.phoneNumber,
+                        regExp: RegExp(r'^.{2,}$'),
                         icon: Icons.call_outlined,
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,

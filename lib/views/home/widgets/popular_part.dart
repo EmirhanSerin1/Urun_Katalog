@@ -33,7 +33,7 @@ class PopularItemsPart extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               margin: EdgeInsets.only(
-                  top: 50 - scale * 25, bottom: 50 - scale * 25),
+                  top: 100 - scale * 25, bottom: 100 - scale * 25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
               ),
