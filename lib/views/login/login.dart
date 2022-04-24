@@ -8,8 +8,15 @@ import 'package:urun_katalog/views/login/widgets/login_password_text_field.dart'
 import 'package:urun_katalog/views/login/widgets/login_text.dart';
 import 'package:urun_katalog/views/login/widgets/register_part.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +24,8 @@ class Login extends StatelessWidget {
     final _emailController = Provider.of<Controllers>(context).emailController;
     final _passwwordController =
         Provider.of<Controllers>(context).passwordController;
+
+  
 
     return WillPopScope(
       onWillPop: () async {
@@ -39,10 +48,23 @@ class Login extends StatelessWidget {
                   const SizedBox(),
                   const LoginText(),
                   Column(
-                    children: const [
+                    children: [
                       LoginEmailTextField(),
                       PasswordTextField(),
-                      LoginButton(),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: CheckboxListTile(
+                          title: Text("Remember me"),
+                          value: isChecked,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              isChecked = value!;
+                            });
+                            print(isChecked);
+                          },
+                        ),
+                      ),
+                      const LoginButton(),
                     ],
                   ),
                   const RegisterPart(),

@@ -21,7 +21,7 @@ Future<http.Response> login(String email, String password) async {
 }
 
 Future<http.Response> signup(String name, String email, String password) async {
-  Map body = {'email': email, 'password': password, 'name': name};
+  var body = json.encode({'email': email, 'password': password, 'name': name});
   Map<String, String> headers = {
     "Accept": "application/json",
     "Content-Type": "application/json"
