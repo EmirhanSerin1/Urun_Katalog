@@ -28,7 +28,7 @@ Projede kullandığım bazı ayrıntılar.
 
 - Uygulama video Youtube Link => https://www.youtube.com/embed/bFg1Canvodc
 
-![https://www.youtube.com/embed/bFg1Canvodc](http://damien.pobel.fr/images/youtube-video-github.gif)
+![https://www.youtube.com/embed/bFg1Canvodc](https://www.youtube.com/embed/bFg1Canvodc)
 
 
 
